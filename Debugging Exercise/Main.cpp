@@ -61,24 +61,30 @@ int main()
 	// Attack each other until only one team is left alive
 	while (marineAlive(squad) && zerglingAlive(swarm)) // If anyone is left alive to fight . . .
 	{
-		if (marineAlive(squad)) // if there's at least one marine alive
+		// if there's at least one marine alive
+		if (marineAlive(squad)) 
 		{
-			for (size_t i = 0; i < squadSize; i++) // go through the squad
+			// go through the squad
+			for (size_t i = 0; i < squadSize; i++) 
 			{
 				// each marine will attack the first zergling in the swarm
 				cout << "A marine fires for " << squad[i].attack() << " damage. " << endl;
 				int damage = squad[i].attack();
 				swarm[0].takeDamage(damage);
-				if (!swarm[0].isAlive()) // if the zergling dies, it is removed from the swarm
+				// if the zergling dies, it is removed from the swarm
+				if (!swarm[0].isAlive()) 
 				{
 					cout << "The zergling target dies" << endl;
 					swarm.erase(swarm.begin());
 				}
 			}
 		}
-		if (zerglingAlive(swarm)) // if there's at least one zergling alive
+
+		// if there's at least one zergling alive
+		if (zerglingAlive(swarm)) 
 		{
-			for (vector<Zergling>::iterator i = swarm.begin(); i != swarm.end(); ++i) // loop through zerglings
+			// loop through zerglings
+			for (vector<Zergling>::iterator i = swarm.begin(); i != swarm.end(); ++i) 
 			{
 				cout << "A zergling attacks for " << i->attack() << " damage." << endl;
 				squad.begin()->takeDamage(i->attack());
